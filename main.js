@@ -1,3 +1,6 @@
+"use strict";
+exports.__esModule = true;
+var ptn_1 = require("./ptn");
 function log(message) {
     console.log(message);
 }
@@ -36,8 +39,8 @@ var Color;
 var bacgroundCol = Color.Red;
 var mseeg;
 mseeg = 'abc';
-var endC = mseeg.endsWith('c');
-var altC = mseeg.endsWith('c');
+//let endC = (mseeg as String).endsWith('c');
+//let altC = (<string> mseeg).endsWith('c');
 var log2 = function (xxx) {
     console.log(xxx);
 };
@@ -45,9 +48,37 @@ var doLog = function (messa) {
     console.log(messa);
 };
 var dolog2 = function (mes) { return console.log(mes); };
-var point = function (PointObjc) {
-};
-point({
-    x: 1,
-    y: 2
-});
+var Cord = /** @class */ (function () {
+    function Cord(x, y) {
+        this.x = x;
+        this.y = y;
+        this.x = x;
+        this.y = y;
+    }
+    //private x: number;
+    //private y:number;
+    Cord.prototype.point = function () {
+        console.log("x " + this.x + " y " + this.y);
+    };
+    Object.defineProperty(Cord.prototype, "X", {
+        get: function () {
+            return this.x;
+        },
+        set: function (value) {
+            if (value < 0) {
+                throw new Error("value less than 0");
+            }
+            else {
+                this.x = value;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Cord;
+}());
+var point = new ptn_1.Point(3.5);
+var ptn = new Cord(2, 5);
+var x = ptn.X;
+ptn.X = 10;
+ptn.point();
