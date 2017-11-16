@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var ptn_1 = require("./ptn");
 function log(message) {
     console.log(message);

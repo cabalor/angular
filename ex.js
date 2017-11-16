@@ -1,12 +1,12 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var Like = /** @class */ (function () {
     //likeCounts: number; //filed 
     //isSelected: boolean; // filed
-    function Like(likeCounts, isSelected) {
+    function Like(_likeCounts, _isSelected) {
         //this.likeCounts = likeCounts; dont need to assign this when we have public variable in constructor
-        this.likeCounts = likeCounts;
-        this.isSelected = isSelected;
+        this._likeCounts = _likeCounts;
+        this._isSelected = _isSelected;
     }
     Like.prototype.clik = function () {
         // if(this.isSelected){
@@ -16,10 +16,24 @@ var Like = /** @class */ (function () {
         //     this.likeCounts++;
         //     this.isSelecte4d=true;
         // }
-        this.likeCounts = (this.isSelected) ? this.likeCounts - 1 : this.likeCounts + 1;
+        this._likeCounts = (this._isSelected) ? this._likeCounts - 1 : this._likeCounts + 1;
         //this.likeCounts += (this.isSelected)? -1 : 1;
-        this.isSelected = !this.isSelected;
+        this._isSelected = !this._isSelected;
     };
+    Object.defineProperty(Like.prototype, "likeCount", {
+        get: function () {
+            return this._likeCounts;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Like.prototype, "isSelected", {
+        get: function () {
+            return this._isSelected;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Like;
 }());
 exports.Like = Like;

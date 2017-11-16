@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var ex_1 = require("./ex");
 var like = new ex_1.Like(10, true);
 like.clik();

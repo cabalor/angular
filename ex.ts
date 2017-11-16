@@ -3,7 +3,7 @@ export class Like{
     //likeCounts: number; //filed 
     //isSelected: boolean; // filed
 
-    constructor(public likeCounts: number, public isSelected: boolean){
+    constructor(private _likeCounts: number, private _isSelected: boolean){
         //this.likeCounts = likeCounts; dont need to assign this when we have public variable in constructor
 
     }
@@ -16,8 +16,16 @@ export class Like{
         //     this.isSelecte4d=true;
         // }
 
-        this.likeCounts = (this.isSelected)? this.likeCounts-1: this.likeCounts+1;
+        this._likeCounts = (this._isSelected)? this._likeCounts-1: this._likeCounts+1;
         //this.likeCounts += (this.isSelected)? -1 : 1;
-        this.isSelected = !this.isSelected;
+        this._isSelected = !this._isSelected;
     }
+
+    get likeCount(){
+        return this._likeCounts;
+    }
+    get isSelected(){
+        return this._isSelected;
+    }
+
 }
