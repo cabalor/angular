@@ -15,6 +15,7 @@ function lop() {
     var ii = 5;
     console.log("final" + ii); // not possible to coompile, if i was var you could use it outside loop
 }
+ggg
 var c;
 var b;
 var g;
