@@ -1,14 +1,15 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'favor',
   templateUrl: './favor.component.html',
   styleUrls: ['./favor.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  //inputs: ['clicked'] // you can use this instead of Input in imports, i have to del annotation 
 })
 export class FavorComponent implements OnInit {
 
-  clicked: boolean;
+  @Input() clicked: boolean;
 
   constructor() { }
 

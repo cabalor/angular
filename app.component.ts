@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   newTitle: string;
   title = 'Angular app';
+
+  
   post = {
     title: "Title",
-    isFav: true
+    clicked: true
   }
 
 }
