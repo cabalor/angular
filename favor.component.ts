@@ -9,7 +9,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 })
 export class FavorComponent implements OnInit {
 
-  @Input() clicked: boolean;
+  @Input('is-clicked') clicked: boolean;
 
   constructor() { }
 
