@@ -1,9 +1,9 @@
-<h1>Angular</h1>
+<h1>Jo Jo</h1>
 <courses></courses>
 <authors></authors>
 <favor></favor>
 <input type="text"[(ngModel)]="newTitle">
 <br>
 {{newTitle | titleCase}}
-<br><favor [is-clicked]="post.clicked"></favor>
+<br><favor [is-clicked]="post.clicked" (change)="onClickedChange($event)"></favor>
 

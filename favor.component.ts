@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'favor',
@@ -9,7 +9,8 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 })
 export class FavorComponent implements OnInit {
 
-  @Input('is-clicked') clicked: boolean;
+  @Input('is-clicked') clicked: boolean; // is-clicked is an allias
+  @Output() change = new EventEmitter(); // allias dla outputa
 
   constructor() { }
 
@@ -18,7 +19,9 @@ export class FavorComponent implements OnInit {
 
   onClick(){
     this.clicked = !this.clicked;
+    this.change.emit({newValue: this.clicked});
   }
-
-
+}
+export interface ClickChangeArgs{
+  newValue: boolean;
 }
