@@ -1,10 +1,20 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'favor',
   templateUrl: './favor.component.html',
   styleUrls: ['./favor.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  styles: [
+    `
+    .glyphicon{
+      color: purple;
+  }
+
+  .glyphicon-star{
+    background: yellow;
+  }
+    `
+  ],
   //inputs: ['clicked'] // you can use this instead of Input in imports, i have to del annotation 
 })
 export class FavorComponent implements OnInit {
