@@ -12,6 +12,7 @@ import { CorsesServ } from './courses.service';
 import { AuthorsComponent } from './authors/authors.component';
 import { FavorComponent } from './favor/favor.component';
 import { TitleCasePipe } from './title-case.pipe';
+import { PanelComponent } from './panel/panel.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TitleCasePipe } from './title-case.pipe';
     AuthorsComponent,
     SummaryPipe,
     FavorComponent,
-    TitleCasePipe
+    TitleCasePipe,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
