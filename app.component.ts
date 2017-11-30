@@ -16,6 +16,13 @@ export class AppComponent {
     clicked: true
   }
 
+
+  message = {
+    body: '..',
+    clickNumber: 10,
+    isActive: true
+  }
+
   onClickedChange(eventArgs: ClickChangeArgs){
     console.log("clicked ", eventArgs);
   }

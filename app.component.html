@@ -6,4 +6,12 @@
 <br>
 {{newTitle | titleCase}}
 <br><favor [is-clicked]="post.clicked" (change)="onClickedChange($event)"></favor>
-
+<br><bootstrap-panel>
+<ng-container class="heading">hhhhhh</ng-container>
+<div class="body">bbbbbb</div>
+</bootstrap-panel>
+<app-like
+    [contOfClicks]="message.clickNumber"
+    [isActive]="message.checked"
+    >wird :D
+</app-like>
