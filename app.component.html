@@ -15,3 +15,11 @@
     [isActive]="message.checked"
     >wird :D
 </app-like>
+
+<div *ngIf="tab.length > 0; then elementList else noElements"></div>
+<ng-template #elementList>
+        Elemenety
+</ng-template>
+<ng-template #noElements>
+    No elements
+</ng-template>

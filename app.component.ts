@@ -10,7 +10,10 @@ export class AppComponent {
   newTitle: string;
   title = 'Angular app';
 
-  
+  tab=[];
+
+
+
   post = {
     title: "Title",
     clicked: true
