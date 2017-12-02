@@ -23,3 +23,28 @@
 <ng-template #noElements>
     No elements
 </ng-template>
+
+<div [hidden]="tab.length >0">
+ visible
+</div>
+<div [hidden]="tab.length == 0">
+    not visible or so
+</div><br>
+<ul class="nav nav-pills">
+<li [class.active]="viewSwitch == 'map'"><a (click)="viewSwitch = 'map'">Mapy</a></li>
+<li [class.active]="viewSwitch == 'lista'"><a (click)="viewSwitch = 'lista'">Listy</a></li>
+</ul>
+<div [ngSwitch]="viewSwitch">
+    <div *ngSwitchCase="'map'">Mapsy</div>
+    <div *ngSwitchCase="'lista'">listy</div>
+    <div *ngSwitchDefault>dupa</div>
+</div><br>
+
+<button (click)="addidtion()">Add</button>
+<ul>
+    <li *ngFor="let game of games; index as i; even as isEven">
+         {{i}} -  {{game.name}} <span *ngIf="isEven">(EVEN)</span>
+         <button (click)="remGame(game)">Rem</button>
+    </li>
+</ul>
+
