@@ -13,13 +13,10 @@ export class AppComponent {
 
   tab=[];
 
-
-
   post = {
     title: "Title",
     clicked: true
   }
-
 
   message = {
     body: '..',
@@ -33,8 +30,10 @@ export class AppComponent {
 
   viewSwitch = 'dupsko';
 
+  books;
+
   games = [{id:1, name:"dungeon crawler"}, {id:2, name:"star wras crawler"},
-{id:3, name:"arham crawler"}
+  {id:3, name:"arham crawler"}
 ]
 
 addidtion(){
@@ -45,5 +44,28 @@ remGame(game){
 let int = this.games.indexOf(game);
 this.games.splice(int, 1);
 }
+
+loadBooks(){
+  this.books = [
+      {id:1, name:'pustynia'},
+      {id:2, name:'morze'},
+      {id:3, name:'krzaki'},
+  ];
+}
+
+trackBook(index, book){ // dla duzej listy uzywamy
+  return book ? book.id : undefined; 
+}
+
+sejv = true;
+
+  job = {
+    name: 'buroka woka',
+    worker: {
+        name: 'torton jon'
+} 
+}
+
+
 
 }

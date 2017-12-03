@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'favor',
@@ -15,6 +15,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   }
     `
   ],
+  encapsulation: ViewEncapsulation.Emulated
   //inputs: ['clicked'] // you can use this instead of Input in imports, i have to del annotation 
 })
 export class FavorComponent implements OnInit {

@@ -5,7 +5,21 @@
 
 </style>
 <span class="glyphicon"
- [class.glyphicon-star]="clicked"
- [class.glyphicon-star-empty]="!clicked"
+ [ngClass]="{
+'glyphicon-star': clicked,
+'glyphicon-star-empty': !clicked 
+}"
  (click)="onClick()"
- ></span>
+ ><!-- 
+     //[class.glyphicon-star]="clicked"
+ [class.glyphicon-star-empty]="!clicked"//   ==
+ 
+ //[ngClass]="{
+'glyphicon-star': clicked,
+'glyphicon-star-empty': !clicked 
+}"//   
+-->
+
+</span>
+
+

@@ -38,8 +38,8 @@
     <div *ngSwitchCase="'map'">Mapsy</div>
     <div *ngSwitchCase="'lista'">listy</div>
     <div *ngSwitchDefault>dupa</div>
-</div><br>
-
+</div>
+<br>
 <button (click)="addidtion()">Add</button>
 <ul>
     <li *ngFor="let game of games; index as i; even as isEven">
@@ -47,4 +47,30 @@
          <button (click)="remGame(game)">Rem</button>
     </li>
 </ul>
+<br>
+<button (click)="loadBooks()">Load Bames</button>
+<ul>
+    <li *ngFor="let book of books; trackBy: trackBook">
+            {{book.name}} 
+    </li>
+</ul><br>
+
+Sejwing
+
+<button
+[style.backgroundColor] = "sejv ? 'black': 'purple'"
+[style.color]="sejv ? 'white': 'green'"
+[style.fontWeight]="sejv? 'bold':'normal'"
+[ngStyle]="{
+    'backgroundColor': sejv ? 'black': 'purple'}"
+>
+   Sejv 
+</button><br>
+
+<span>{{job.worker?.name}}</span><br>
+
+<input type="text" [appFormatInput]="'duzaLitera'">
+
+
+
 

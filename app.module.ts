@@ -13,6 +13,8 @@ import { AuthorsComponent } from './authors/authors.component';
 import { FavorComponent } from './favor/favor.component';
 import { TitleCasePipe } from './title-case.pipe';
 import { PanelComponent } from './panel/panel.component';
+import { LikeComponent } from './like/like.component';
+import { FormatInputDirective } from './format-input.directive';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { PanelComponent } from './panel/panel.component';
     SummaryPipe,
     FavorComponent,
     TitleCasePipe,
-    PanelComponent
+    PanelComponent,
+    LikeComponent,
+    FormatInputDirective
   ],
   imports: [
     BrowserModule,
