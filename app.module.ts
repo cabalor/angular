@@ -15,6 +15,8 @@ import { TitleCasePipe } from './title-case.pipe';
 import { PanelComponent } from './panel/panel.component';
 import { LikeComponent } from './like/like.component';
 import { FormatInputDirective } from './format-input.directive';
+import { FastComponent } from './fast/fast.component';
+import { FormekComponent } from './formek/formek.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { FormatInputDirective } from './format-input.directive';
     TitleCasePipe,
     PanelComponent,
     LikeComponent,
-    FormatInputDirective
+    FormatInputDirective,
+    FastComponent,
+    FormekComponent
   ],
   imports: [
     BrowserModule,

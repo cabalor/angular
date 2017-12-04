@@ -1,0 +1,20 @@
+.fast {
+    border: 1px;
+}
+
+.head{
+    padding: 20px;
+}
+
+.body{
+padding: 20px;
+
+}
+
+.exp{
+    background-color: gray;
+}
+
+.glyphicon {
+    float: right;
+}

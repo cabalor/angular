@@ -1,0 +1,17 @@
+<div class="fast">
+  <div class="head"
+  [class.exp]="isActive"
+  (click)="onClick()"
+  >
+    {{title}}
+    <span class="glyphicon"
+    [ngClass]="{
+     'glyphicon-chevron-up': isActive,
+     'glyphicon-chevron-down': !isActive 
+    }"
+    ></span>
+  </div>
+  <div *ngIf="isActive" class="body">
+    <ng-content></ng-content>
+  </div>
+</div>
