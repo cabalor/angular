@@ -13,4 +13,7 @@ export class FormekComponent implements OnInit {
   ngOnInit() {
   }
 
+  log(x) {console.log()}
+
+
 }
