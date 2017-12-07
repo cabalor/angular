@@ -15,5 +15,7 @@ export class FormekComponent implements OnInit {
 
   log(x) {console.log()}
 
-
+  submit(f){
+    console.log(f);
+  }
 }
