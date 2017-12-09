@@ -10,6 +10,12 @@ export class FormekComponent implements OnInit {
 
   constructor() { }
 
+  contact = [
+    {id: 1, name:"dupa"},
+    {id: 2, name:"zupa"}
+
+  ];
+
   ngOnInit() {
   }
 
