@@ -28,6 +28,14 @@
                 <option *ngFor="let cont of contact" [value]="cont.id">{{cont.name}}</option>
             </select>
 </div>
+
+
+<div *ngFor="let cont of contact" class="radio">
+    <label for="">
+        <input ngModel type="radio" name="method" [value]="cont.id"> {{cont.name}}
+    </label>
+</div>
+
 <p>
     {{f.value | json}}
 </p>
