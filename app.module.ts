@@ -1,10 +1,9 @@
+import { SignupFormComponent } from './signup-form/signup-form.component';
 import { SummaryPipe } from './summary.pipe';
 import { AuthorsService } from './authors.service';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from'@angular/forms';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { CoursesComp } from './courses.component';
 import { CourseComponent } from './course/course.component';
@@ -17,6 +16,7 @@ import { LikeComponent } from './like/like.component';
 import { FormatInputDirective } from './format-input.directive';
 import { FastComponent } from './fast/fast.component';
 import { FormekComponent } from './formek/formek.component';
+import { ThingFormComponent } from './thing-form/thing-form.component';
 
 
 @NgModule({
@@ -32,7 +32,9 @@ import { FormekComponent } from './formek/formek.component';
     LikeComponent,
     FormatInputDirective,
     FastComponent,
-    FormekComponent
+    FormekComponent,
+    ThingFormComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
