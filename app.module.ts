@@ -2,7 +2,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { SummaryPipe } from './summary.pipe';
 import { AuthorsService } from './authors.service';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from'@angular/forms';
+import {FormsModule, ReactiveFormsModule} from'@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CoursesComp } from './courses.component';
@@ -38,7 +38,8 @@ import { ThingFormComponent } from './thing-form/thing-form.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CorsesServ,
