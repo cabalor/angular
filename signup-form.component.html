@@ -6,10 +6,12 @@
             id="username" 
             type="text" 
             class="form-control">
+            <div *ngIf="usern.pending">cheking if name is unique</div>
             <div *ngIf="usern.touched && form.get('usern').invalid" class="alert alert-danger">
                 <div *ngIf="usern.errors.required">czerwono bo jest req</div>
                 <div *ngIf="usern.errors.minlength">co najmniej 5 literek</div>
                 <div *ngIf="usern.errors.cantContSpa">you cant use space</div>
+                <div *ngIf="usern.errors.unique">name have to be unique, and this is already on server</div>
             </div>
     </div>
     <div class="form-group">
