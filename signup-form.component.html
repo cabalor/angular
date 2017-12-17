@@ -1,4 +1,8 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="login">
+    <div formGroupName="account">
+    <div *ngIf="form.errors" class="alert alert-danger">
+            blad w hasle albo userze nejmie
+    </div>
     <div class="form-group">
         <label for="username">Username</label>
         <input 
@@ -22,5 +26,6 @@
             type="text" 
             class="form-control">
     </div>
+</div>
     <button class="btn btn-primary" type="submit">Sign Up</button>
 </form>

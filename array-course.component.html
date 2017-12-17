@@ -1,0 +1,13 @@
+<form>
+  <input type="text" class="form-control" (keyup.enter)="addName(nazwa)" #nazwa>
+  <ul class="list-group">
+    <!-- *ngFor="let nazwa of form.get('nazwy').controls" -->
+<li 
+*ngFor="let nazwa of nazwy.controls"
+(click)="remNazwa(nazwa)"
+class="list-group-item">
+    {{nazwa.value}}
+</li>
+
+  </ul>
+</form>
