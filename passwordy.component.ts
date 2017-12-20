@@ -1,6 +1,7 @@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { PassValidators } from './pass.validators';
 
 @Component({
   selector: 'passwordy',
@@ -16,10 +17,12 @@ export class PasswordyComponent implements OnInit {
   constructor(fb: FormBuilder) { 
 
       this.form = fb.group({
-        staryPass: ['', Validators.required],
+        staryPass: ['', Validators.required, PassValidators.staryPassValid],
         nowyPass: ['', Validators.required],
         poPass: ['', Validators.required]
-      })
+      },{
+        validator: PassValidators.passMatcher
+      });
 
   }
 
