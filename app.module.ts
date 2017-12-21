@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { SummaryPipe } from './summary.pipe';
 import { AuthorsService } from './authors.service';
@@ -17,6 +18,9 @@ import { FormatInputDirective } from './format-input.directive';
 import { FastComponent } from './fast/fast.component';
 import { FormekComponent } from './formek/formek.component';
 import { ThingFormComponent } from './thing-form/thing-form.component';
+import { ArrayCourseComponent } from './array-course/array-course.component';
+import { PasswordyComponent } from './passwordy/passwordy.component';
+import { HttpCompComponent } from './http-comp/http-comp.component';
 
 
 @NgModule({
@@ -34,12 +38,16 @@ import { ThingFormComponent } from './thing-form/thing-form.component';
     FastComponent,
     FormekComponent,
     ThingFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    ArrayCourseComponent,
+    PasswordyComponent,
+    HttpCompComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [
     CorsesServ,
