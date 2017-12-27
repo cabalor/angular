@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Http } from '@angular/http';
+import { post } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'http-get',
@@ -9,16 +10,23 @@ import { Http } from '@angular/http';
 })
 export class HttpCompComponent implements OnInit {
 
-
+    private url = 'https://jsonplaceholder.typicode.com/posts';
     posty: any[];
 
-  constructor(http: Http) {
-      http.get('https://jsonplaceholder.typicode.com/posts').subscribe(response =>{
+  constructor(private http: Http) {
+      http.get(this.url).subscribe(response =>{
         this.posty = response.json();
       })
    }
-
+   robPosta(nazwa: HTMLInputElement){
+      let posicik = { title: nazwa.value};
+      nazwa.value = '';
+      this.http.post(this.url, JSON.stringify(post)).subscribe(response =>{
+        posicik['id'] = response.json().id;
+        this.posty.splice(0, 0, posicik)
+      })
+   }
+   
   ngOnInit() {
   }
-
 }

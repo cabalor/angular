@@ -1,3 +1,8 @@
+<label for="posty">poscik</label>
+<input
+(keyup.enter)="robPosta(nazwa)" #nazwa class="form-control" name="posty"
+>
+<br>
 <ul class="list-group">
   <li 
   *ngFor="let post of posty"
