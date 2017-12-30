@@ -34,9 +34,13 @@ export class HttpCompComponent implements OnInit {
     this.http.patch(this.url + '/'+ post.id, JSON.stringify({isRead: true})).subscribe(response =>{
       console.log(response.json)
     });
-
-
-
     this.http.patch(this.url, JSON.stringify(post));
+  }
+
+  delete(post){
+      this.http.delete(this.url + '/'+post.id).subscribe(response =>{
+        let ind = this.posty.indexOf(post);
+        this.posty.splice(ind, 1);
+      })
   }
 }
