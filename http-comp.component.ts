@@ -14,9 +14,7 @@ export class HttpCompComponent implements OnInit {
     posty: any[];
 
   constructor(private http: Http) {
-      http.get(this.url).subscribe(response =>{
-        this.posty = response.json();
-      })
+    
    }
    robPosta(nazwa: HTMLInputElement){
       let posicik = { title: nazwa.value};
@@ -28,6 +26,9 @@ export class HttpCompComponent implements OnInit {
    }
    
   ngOnInit() {
+    this.http.get(this.url).subscribe(response =>{
+      this.posty = response.json();
+    })
   }
 
   update(post){
