@@ -44,4 +44,8 @@ export class HttpCompComponent implements OnInit {
         this.posty.splice(ind, 1);
       })
   }
+
+  service(){
+
+  }
 }
