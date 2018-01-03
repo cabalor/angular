@@ -21,6 +21,7 @@ import { ThingFormComponent } from './thing-form/thing-form.component';
 import { ArrayCourseComponent } from './array-course/array-course.component';
 import { PasswordyComponent } from './passwordy/passwordy.component';
 import { HttpCompComponent } from './http-comp/http-comp.component';
+import { PostService } from './servic/post.service';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { HttpCompComponent } from './http-comp/http-comp.component';
     HttpModule
   ],
   providers: [
+    PostService,
     CorsesServ,
     AuthorsService
   ],

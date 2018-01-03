@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Http } from '@angular/http';
-import { post } from 'selenium-webdriver/http';
+import { PostService } from '../servic/post.service';
+import { error } from 'util';
 
 @Component({
   selector: 'http-get',
@@ -10,42 +10,49 @@ import { post } from 'selenium-webdriver/http';
 })
 export class HttpCompComponent implements OnInit {
 
-    private url = 'https://jsonplaceholder.typicode.com/posts';
+    
     posty: any[];
 
-  constructor(private http: Http) {
+  constructor(private service: PostService) {
     
    }
    robPosta(nazwa: HTMLInputElement){
       let posicik = { title: nazwa.value};
       nazwa.value = '';
-      this.http.post(this.url, JSON.stringify(post)).subscribe(response =>{
+      this.service.robPosta(posicik).subscribe(response =>{
         posicik['id'] = response.json().id;
         this.posty.splice(0, 0, posicik)
+      }, error => {
+        console.log(error);
       })
    }
    
   ngOnInit() {
-    this.http.get(this.url).subscribe(response =>{
+    this.service.getPosty().subscribe(response =>{
       this.posty = response.json();
+    }, error =>{
+      alert('unxpected error');
+      console.log(error);
     })
   }
 
   update(post){
-    this.http.patch(this.url + '/'+ post.id, JSON.stringify({isRead: true})).subscribe(response =>{
+    this.service.update(post).subscribe(response =>{
       console.log(response.json)
+    }, error => {
+      console.log(error);
     });
-    this.http.patch(this.url, JSON.stringify(post));
+    //this.http.patch(this.url, JSON.stringify(post));
   }
 
   delete(post){
-      this.http.delete(this.url + '/'+post.id).subscribe(response =>{
+      this.service.del(post).subscribe(response =>{
         let ind = this.posty.indexOf(post);
         this.posty.splice(ind, 1);
+      }, error => {
+        console.log(error);
       })
   }
 
-  service(){
-
-  }
+  
 }
