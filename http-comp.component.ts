@@ -1,3 +1,4 @@
+import { BadInput } from './../badinput';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PostService } from '../servic/post.service';
 import { error } from 'util';
@@ -26,9 +27,9 @@ export class HttpCompComponent implements OnInit {
       this.service.robPosta(posicik).subscribe(response =>{
         posicik['id'] = response.json().id;
         this.posty.splice(0, 0, posicik)
-      }, (error: Response) => {
-        if(error.status === 400){
-          //this.form.setErrors(error.json())
+      }, (error: AppError) => {
+        if(error instanceof BadInput){
+          //this.form.setErrors(error.originalError);
           console.log(400);
         } else {
           console.log(error);
