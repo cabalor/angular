@@ -31,28 +31,28 @@ export class HttpCompComponent implements OnInit {
         if(error instanceof BadInput){
           //this.form.setErrors(error.originalError);
           console.log(400);
-        } else {
+        } else throw error; /*{
+          alert('dupa');
           console.log(error);
-        }
+        }*/
       })
    }
    
   ngOnInit() {
     this.service.getPosty().subscribe(response =>{
       this.posty = response.json();
-    }, error =>{
+    }, /*error =>{
       alert('unxpected error');
       console.log(error);
-    })
+    }*/)
   }
 
   update(post){
     this.service.update(post).subscribe(response =>{
       console.log(response.json)
-    }, error => {
-      alert('unxpected error');
-      console.log(error);
-    });
+    }
+      
+    );
     //this.http.patch(this.url, JSON.stringify(post));
   }
 
@@ -63,9 +63,9 @@ export class HttpCompComponent implements OnInit {
       }, (error: AppError) => {
         if(error instanceof NotFoundErr){
         alert("wywalone")
-        } else {
+        } else throw error /*{
         console.log(error);
-        }
+        }*/
       })
   }
 

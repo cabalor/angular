@@ -32,16 +32,24 @@ export class PostService {
   }
 
   update(post){
-    return this.http.patch(this.url + '/'+ post.id, JSON.stringify({isRead: true}));
+    return this.http.patch(this.url + '/'+ post.id, JSON.stringify({isRead: true}))
+    .catch(this.zbierajErrory);
   }
 
   del(post){
-    return this.http.delete(this.url + '/'+post.id).catch((error: Response) => {
-      if(error.status === 404){
-        return Observable.throw(new NotFoundErr);
-      }
-        return Observable.throw(new AppError(error))
-    });
+    return this.http.delete(this.url + '/'+post.id).catch(this.zbierajErrory);
   }
 
-}
+
+  private zbierajErrory(error: Response){
+    if(error.status === 400){
+      return Observable.throw(new BadInput(error.json()));
+    }
+    
+    if(error.status === 404){
+      return Observable.throw(new NotFoundErr);
+    }
+      return Observable.throw(new AppError(error))
+  }
+  }
+
