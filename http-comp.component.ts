@@ -24,7 +24,7 @@ export class HttpCompComponent implements OnInit {
    robPosta(nazwa: HTMLInputElement){
       let posicik = { title: nazwa.value};
       nazwa.value = '';
-      this.service.robPosta(posicik).subscribe(response =>{
+      this.service.rob(posicik).subscribe(response =>{
         posicik['id'] = response.json().id;
         this.posty.splice(0, 0, posicik)
       }, (error: AppError) => {
@@ -39,7 +39,7 @@ export class HttpCompComponent implements OnInit {
    }
    
   ngOnInit() {
-    this.service.getPosty().subscribe(response =>{
+    this.service.getAll().subscribe(response =>{
       this.posty = response.json();
     }, /*error =>{
       alert('unxpected error');
