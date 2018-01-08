@@ -2,7 +2,9 @@ import { BadInput } from './../badinput';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch'
+import 'rxjs/add/operator/map'
 import 'rxjs/add/observable/throw'
+
 import { Observable } from 'rxjs/Observable';
 import { AppError } from '../app-error';
 import { NotFoundErr } from '../notFound';
@@ -16,7 +18,9 @@ export class DataService {
   constructor(private url: string, private http: Http) { }
 
   getAll(){
-    return this.http.get(this.url).catch(this.zbierajErrory);
+    return this.http.get(this.url)
+    .map(response => response.json())
+    .catch(this.zbierajErrory);
   }
 
   rob(resources){
@@ -31,6 +35,7 @@ export class DataService {
 
   update(resources){
     return this.http.patch(this.url + '/'+ resources.id, JSON.stringify({isRead: true}))
+    .map(response => response.json())
     .catch(this.zbierajErrory);
   }
 
