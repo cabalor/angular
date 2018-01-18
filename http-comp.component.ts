@@ -23,11 +23,12 @@ export class HttpCompComponent implements OnInit {
    }
    robPosta(nazwa: HTMLInputElement){
       let posicik = { title: nazwa.value};
+      this.posty.splice(0, 0, posicik);
       nazwa.value = '';
       this.service.rob(posicik).subscribe(response =>{
         posicik['id'] = response.json().id;
-        this.posty.splice(0, 0, posicik)
       }, (error: AppError) => {
+        this.posty.splice(0, 1);
         if(error instanceof BadInput){
           //this.form.setErrors(error.originalError);
           console.log(400);
@@ -39,17 +40,16 @@ export class HttpCompComponent implements OnInit {
    }
    
   ngOnInit() {
-    this.service.getAll().subscribe(response =>{
-      this.posty = response.json();
-    }, /*error =>{
+    this.service.getAll().subscribe(posts =>this.posty = posts
+     /*error =>{
       alert('unxpected error');
       console.log(error);
     }*/)
   }
 
   update(post){
-    this.service.update(post).subscribe(response =>{
-      console.log(response.json)
+    this.service.update(post).subscribe(updatedPost =>{
+      console.log(updatedPost)
     }
       
     );
@@ -57,10 +57,12 @@ export class HttpCompComponent implements OnInit {
   }
 
   delete(post){
-      this.service.del(post).subscribe(response =>{
-        let ind = this.posty.indexOf(post);
+    let ind = this.posty.indexOf(post);
         this.posty.splice(ind, 1);
-      }, (error: AppError) => {
+      this.service.dell(post)
+      .subscribe(/*() response =>{
+      }*/null, (error: AppError) => {
+        this.posty.splice(ind, 0, post)
         if(error instanceof NotFoundErr){
         alert("wywalone")
         } else throw error /*{
@@ -68,6 +70,9 @@ export class HttpCompComponent implements OnInit {
         }*/
       })
   }
+  nowyDel(post){
+    this.service.del(post.id);
 
+  }
   
 }

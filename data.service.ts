@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch'
 import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/observable/throw'
 
 import { Observable } from 'rxjs/Observable';
@@ -40,6 +41,13 @@ export class DataService {
   }
 
   del(id){
+    return this.http.delete(this.url + '/'+id)
+    .map(response => response.json())
+    .toPromise()
+    .catch(this.zbierajErrory);
+  }
+
+  dell(id){
     return this.http.delete(this.url + '/'+id).catch(this.zbierajErrory);
   }
 

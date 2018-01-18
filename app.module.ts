@@ -22,6 +22,10 @@ import { ArrayCourseComponent } from './array-course/array-course.component';
 import { PasswordyComponent } from './passwordy/passwordy.component';
 import { HttpCompComponent } from './http-comp/http-comp.component';
 import { PostService } from './servic/post.service';
+import { FollwersComponent } from './follwers/follwers.component';
+import { FollwersService } from './follwers.service';
+import { FollowersyComponent } from './followersy/followersy.component';
+import { FollowersyProfileComponent } from './followersy-profile/followersy-profile.component';
 
 
 @NgModule({
@@ -42,7 +46,10 @@ import { PostService } from './servic/post.service';
     SignupFormComponent,
     ArrayCourseComponent,
     PasswordyComponent,
-    HttpCompComponent
+    HttpCompComponent,
+    FollwersComponent,
+    FollowersyComponent,
+    FollowersyProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,8 @@ import { PostService } from './servic/post.service';
   providers: [
     PostService,
     CorsesServ,
-    AuthorsService
+    AuthorsService,
+    FollwersService
   ],
   bootstrap: [AppComponent]
 })
