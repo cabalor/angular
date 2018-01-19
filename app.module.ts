@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { HttpModule } from '@angular/http';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { SummaryPipe } from './summary.pipe';
@@ -26,6 +28,7 @@ import { FollwersComponent } from './follwers/follwers.component';
 import { FollwersService } from './follwers.service';
 import { FollowersyComponent } from './followersy/followersy.component';
 import { FollowersyProfileComponent } from './followersy-profile/followersy-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -49,13 +52,21 @@ import { FollowersyProfileComponent } from './followersy-profile/followersy-prof
     HttpCompComponent,
     FollwersComponent,
     FollowersyComponent,
-    FollowersyProfileComponent
+    FollowersyProfileComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {path: '**', component: NotFoundComponent},
+      {path: '', component: HomeComponent},
+      {path: 'followers/:username', component: FollowersyComponent},
+      {path: 'followers', component: FollowersyProfileComponent},
+      {path: 'posta', component: HttpCompComponent},
+    ])
   ],
   providers: [
     PostService,
