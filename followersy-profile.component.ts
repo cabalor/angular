@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router/src/router';
 
 @Component({
   selector: 'app-followersy-profile',
@@ -9,15 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FollowersyProfileComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private router: Router) { }
+
+  submit(){
+    this.router.navigate(['/followers', /* req parametrs you can put here*/],{
+      queryParams: {page: 1, order: "oldest"}
+    })
+  }
 
   ngOnInit() {
-    //let x = this.route.snapshot.paramMap.get('id');// bedzie reinicjalizowal component
-    this.route.paramMap.subscribe(params => {
-      let id = +params.get('id'); // + przed parametrem convertuje na liczbe
-      console.log(id);
-    })
-
+  
   }
 
 }

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -8,9 +9,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class FollowersyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    //let x = this.route.snapshot.paramMap.get('id');// bedzie reinicjalizowal component
+    this.route.paramMap.subscribe(params => {
+      let id = +params.get('id'); // + przed parametrem convertuje na liczbe
+      console.log(id);
+    })
+
   }
 
 }
