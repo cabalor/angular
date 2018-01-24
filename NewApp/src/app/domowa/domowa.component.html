@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor"let arch of archiwa">
+    <a
+    [routerLink]="['/archiwa', arch.year, arch.month]"
+    >
+    {{arch.year + '/'+ arch.month}}</a>
+  </li>
+</ul>
