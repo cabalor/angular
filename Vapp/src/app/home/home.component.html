@@ -1,0 +1,13 @@
+
+<h2>dzieb dybry</h2>
+<p *ngIf="authService.zalogowany()">
+  Witaj {{ authService.logedUser.name }}
+</p>
+<ul>
+  <li *ngIf="authService.zalogowany() && authService.logedUser.admin">
+    <a routerLink="/admin">Admin</a></li>
+  <li *ngIf="!authService.zalogowany()"><a routerLink="/login">loguj</a></li>
+  <li *ngIf="authService.zalogowany()">
+    <a (click)="authService.wyloguj()">wyloguj sie</a>
+  </li>
+</ul>
