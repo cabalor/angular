@@ -1,7 +1,7 @@
+import { AdminGuardService } from './services/admin-guard.service';
+import { AGuardService } from './services/a-guard.service';
 import { AuthHttp, AUTH_PROVIDERS, provideAuth, AuthConfig } from 'angular2-jwt/angular2-jwt';
 import { OrderService } from './services/order.service';
-import { AdminAuthGuard } from './admin-auth-guard.service';
-import { AuthGuard } from './auth-guard.service';
 import { MockBackend } from '@angular/http/testing';
 import { BackendProvider } from './backend/fake-backend';
 import { AuthService } from './services/auth.service';
@@ -41,7 +41,7 @@ export function getAuthHttp(http) {
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard] },
+      { path: 'admin', component: AdminComponent, canActivate: [AGuardService, AdminGuardService] },
       { path: 'login', component: LoginComponent },
       { path: 'no-access', component: NoAccessComponent }
     ])
@@ -50,8 +50,8 @@ export function getAuthHttp(http) {
     OrderService,
 
     AuthService,
-    AuthGuard,
-    AdminAuthGuard,
+    AGuardService,
+    AdminGuardService,
     AuthHttp,
     {
       provide: AuthHttp,
