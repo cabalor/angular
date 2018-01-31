@@ -4,7 +4,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {
 
     let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJuYW1lIjoiY2FiYWwiLCJhZG1pbiI6dHJ1ZX0.M3qaMVVQ_TSETf1q0ckTEA5rneswPa2OKeF1OdWZTsU';
-    // token wygenerowany z jwt, zahardkodowany
+    // token wygenerowany z jwt, hard.
     backend.connections.subscribe((connection: MockConnection) => {
       
       setTimeout(() => {
@@ -28,7 +28,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
         }
         
         if (connection.request.url.endsWith('/api/orders') && connection.request.method === RequestMethod.Get) {
-            if (connection.request.headers.get('Authorization') === 'Bearer ' + token) {
+            if (connection.request.headers.get('Authorization') === 'auth ' + token) {
                 connection.mockRespond(new Response(
                     new ResponseOptions({ status: 200, body: [1, 2, 3] })
                 ));
