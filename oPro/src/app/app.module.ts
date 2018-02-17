@@ -1,3 +1,4 @@
+import { AuthService } from './auth-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
@@ -52,7 +53,9 @@ import { LoginComponent } from './login/login.component';
     ])
 
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
