@@ -12,7 +12,7 @@ export class NavBarComponent implements OnInit {
   //user: firebase.User
   user$: Observable<firebase.User>;
 
-
+        //private aServ: Authservice
   constructor(private authFire: AngularFireAuth) {
     //authFire.authState.subscribe(logedUser =>this.user = logedUser) // we have to always unsubscribe from firebase
       this.user$ = authFire.authState; //$ means its an observable
@@ -23,6 +23,7 @@ export class NavBarComponent implements OnInit {
 
   logout(){
       this.authFire.auth.signOut();
+      //this.aServ/logout();
   }
 
 
