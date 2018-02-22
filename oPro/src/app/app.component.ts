@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { AuthService } from './auth-service.service';
 import { Component, OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Subscription } from 'rxjs/Subscription';
+import { UserService } from './user.service';
 
 
 @Component({
@@ -9,22 +11,32 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy{
+export class AppComponent {
 
-  
-  constructor(private auth: AuthService, router: Router){
+  subs: Subscription;
+  constructor(private userServ: UserService, private auth: AuthService, router: Router){
+    // auth.user$.subscribe(user => {
+    //   if(user){
+    //     let returnUrl = localStorage.getItem('returnUrl');
+    //     router.navigateByUrl(returnUrl);
+    //   }
+    // });
     }
       
-    OnInit(auth, router){
-      auth.user$.subscribe(user => {
+     OnInit(auth, router, userServ){
+      this. subs = auth.user$.subscribe(user => {
         if(user){
-          let returnUrl = localStorage.getItem('returnUrl');
-          router.navigateByUrl(returnUrl);
-        }
-      });
-    }
 
-    ngOnDestroy(auth){
-      auth.user$.unsubscribe();
-    }
+            userServ.save(user);
+          let returnUrl = localStorage.getItem('returnUrl');
+           router.navigateByUrl(returnUrl);
+         }
+       });
+     }
+
+    
+
+     ngOnDestroy(){
+     this.subs.unsubscribe();
+     }
 }
