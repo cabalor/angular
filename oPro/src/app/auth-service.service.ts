@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/of';
 
 
 @Injectable()
@@ -28,8 +29,14 @@ export class AuthService {
   }
 
   get appUser$(): Observable<AppUser>{
-    return this.user$.switchMap(user => this.UserService.get(user.uid))
-  
+    //return this.user$.switchMap(user => this.UserService.get(user.uid))
+    
+    //return this.user$.switchMap(user => { if(user) return this.UserService.get(user.uid);
+
+
+      return Observable.of(null);
+    }
+
   }
 
 
