@@ -1,8 +1,13 @@
+import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../product.service';
 
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../category.service';
 import { Router } from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2/database';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import 'rxjs/add/operator/take';
+
 
 @Component({
   selector: 'app-prod-form',
@@ -12,11 +17,20 @@ import { Router } from '@angular/router';
 export class ProdFormComponent implements OnInit {
 
   categories$;
+  product;
 
-  constructor(private router: Router,
-    private categoryService: CategoryService,private productService: ProductService) { 
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private categoryService: CategoryService,
+    private productService: ProductService) { 
     this.categories$ = categoryService.getCategories();
 
+
+    let id = this.route.snapshot.paramMap.get('id');
+    if(id) this.productService.getProduct(id).set(p => this.product =p);
+
+    //if(id) this.productService.getProduct(id).take(1).subscribe(p => this.product =p);
   }
 
 
