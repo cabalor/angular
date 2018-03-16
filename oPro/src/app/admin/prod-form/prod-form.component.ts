@@ -17,7 +17,7 @@ import 'rxjs/add/operator/take';
 export class ProdFormComponent implements OnInit {
 
   categories$;
-  product;
+  product= {};
 
   constructor(
     private router: Router,
