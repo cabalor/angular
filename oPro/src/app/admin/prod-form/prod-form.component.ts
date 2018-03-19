@@ -17,29 +17,35 @@ import 'rxjs/add/operator/take';
 export class ProdFormComponent implements OnInit {
 
   categories$;
-  product= {};
+  product = {};
+  id;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private productService: ProductService) { 
+    private productService: ProductService) {
     this.categories$ = categoryService.getCategories();
 
 
-    let id = this.route.snapshot.paramMap.get('id');
-    if(id) this.productService.getProduct(id).set(p => this.product =p);
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) this.productService.getProduct(this.id).set(p => this.product = p);
 
     //if(id) this.productService.getProduct(id).take(1).subscribe(p => this.product =p);
   }
 
 
- save(product){
-   
-  console.log(product);
-  this.productService.create(product);
-  this.router.navigate(['/admin/products'])
- }
+  save(product) {
+    if (this.id) {
+      this.productService.update(this.id, product);
+    } else {
+      console.log(product);
+      this.productService.create(product);
+    }
+
+    this.router.navigate(['/admin/products']);
+
+  }
 
 
   ngOnInit() {
