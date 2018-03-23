@@ -24,5 +24,8 @@ update(productId, product){
 return this.database.object('/products' + productId).update(product);
 }
 
+delete(productId){
+  return this.database.object('/products/'+productId).remove();
+}
 
 }
