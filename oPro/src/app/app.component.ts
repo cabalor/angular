@@ -25,12 +25,17 @@ export class AppComponent {
       
      OnInit(auth, router, userServ){
       this. subs = auth.user$.subscribe(user => {
-        if(user){
-
-            userServ.save(user);
+        if(!user){
+          return;
+        }
+          userServ.save(user);
           let returnUrl = localStorage.getItem('returnUrl');
-           router.navigateByUrl(returnUrl);
-         }
+          
+          if(!returnUrl){
+            return;
+          }
+            localStorage.removeItem('returnUrl');
+            router.navigateByUrl(returnUrl);
        });
      }
 
